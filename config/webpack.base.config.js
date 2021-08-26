@@ -11,6 +11,7 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.p
 //TODO cross-env - WTF
 //TODO lint
 //TODO dev server
+//TODO including script to specific html page (not for all)
 module.exports = {
   mode: "development",
   devtool: "source-map", //TODO console parameter with/without maps
