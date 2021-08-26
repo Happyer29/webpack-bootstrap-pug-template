@@ -6,17 +6,13 @@
   "scripts": {
     "start": "npm-run-all --parallel lint:watch build",
     "start:prod": "npm-run-all --parallel lint test build:prod",
-
     "clean-dist": "rimraf ./dist && mkdir dist",
     "clean-build": "rimraf ./build && mkdir build",
     "clean": "npm-run-all clean-dist clean-build",
-
     "lint": "esw ./src/**/*.js",
     "lint:watch": "npm run lint -- --watch",
-
     "server": "nodemon index.js",
     "server:prod": "cross-env NODE_ENV=production nodemon server.js",
-
     "prebuild": "npm-run-all clean-dist",
     "build": "webpack --config ./config/webpack.dev.config.js",
     "postbuild": "npm run server",
@@ -28,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
+    "@popperjs/core": "^2.9.3",
     "autoprefixer": "^10.3.2",
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
@@ -48,6 +45,7 @@
     "nodemon": "^2.0.12",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^6.1.1",
+    "precss": "^4.0.0",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "sass-loader": "^12.1.0",

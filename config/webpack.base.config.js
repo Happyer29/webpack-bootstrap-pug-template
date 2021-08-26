@@ -1,11 +1,9 @@
-const {PATHS, PAGES_DIR, ENTRY} = require('./files.config.js');
-const fs = require('fs')
+const {PATHS, PAGES_DIR, ENTRY, PAGES} = require('./files.config.js');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const miniCss = require("mini-css-extract-plugin");
 const copyWebpackPlugin = require('copy-webpack-plugin')
 
 
-const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
 
 //TODO mocha tests
 //TODO cross-env - WTF

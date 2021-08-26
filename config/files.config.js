@@ -1,7 +1,9 @@
 const path = require('path')
+const fs = require("fs");
 
 let PAGES_DIR,
     ENTRY,
+    PAGES,
     PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist')
@@ -18,6 +20,9 @@ ENTRY = {
     app: `./src/index.js`
 }
 
+PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
+
+exports.PAGES = PAGES;
 exports.PATHS = PATHS;
 exports.PAGES_DIR = PAGES_DIR;
 
