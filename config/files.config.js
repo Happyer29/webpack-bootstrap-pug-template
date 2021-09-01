@@ -2,28 +2,29 @@ const path = require('path')
 const fs = require("fs");
 
 let PAGES_DIR,
-    ENTRY,
     PAGES,
+    ENTRY = {
+        app     : `./src/index.js`
+    },
     PATHS = {
-    src: path.join(__dirname, '../src'),
-    dist: path.join(__dirname, '../dist')
-}
-PATHS.assets = `${PATHS.src}/assets/`;
-PATHS.fonts = `${PATHS.assets}fonts/`;
-PATHS.img = `${PATHS.assets}img/`;
-PATHS.style = `${PATHS.assets}styles/`;
-PATHS.static = `${PATHS.assets}static/`;
+        src     : path.join(__dirname, '../', 'src'),
+        dist    : path.join(__dirname, '../', 'dist')
+    }
 
-PAGES_DIR = `${PATHS.src}/html/pages/`;
+PATHS.assets    = path.join(PATHS.src, 'assets');
+PATHS.fonts     = path.join(PATHS.assets, 'fonts');
+PATHS.img       = path.join(PATHS.assets, 'img');
+PATHS.style     = path.join(PATHS.assets, 'styles');
+PATHS.static    = path.join(PATHS.assets, 'static');
 
-ENTRY = {
-    app: `./src/index.js`
-}
+PAGES_DIR       = path.join(PATHS.src, 'html', 'pages');
 
-PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
+PAGES           = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'));
 
-exports.PAGES = PAGES;
-exports.PATHS = PATHS;
+
+exports.ENTRY   = ENTRY;
+exports.PAGES   = PAGES;
+exports.PATHS   = PATHS;
 exports.PAGES_DIR = PAGES_DIR;
 
 

@@ -4,7 +4,7 @@ const miniCss = require("mini-css-extract-plugin");
 const copyWebpackPlugin = require('copy-webpack-plugin')
 
 
-
+console.log(PAGES_DIR);
 //TODO mocha tests
 //TODO cross-env - WTF
 //TODO lint
@@ -45,7 +45,7 @@ module.exports = {
   module: {
     rules: [
       { //for using babel
-        test: /^app\/\S*\.m?js$/,
+        test: /\.js$|jsx/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
@@ -76,7 +76,9 @@ module.exports = {
             options: { sourceMap: true }
           }
         ],
-
+        include: [
+          PATHS.style,
+        ],
       },
 
       {//For css
@@ -99,14 +101,14 @@ module.exports = {
         ]
       },
       { //For pug
-         test: /\.pug$/,
-         use: ["pug-loader"],
+        test: /\.pug$/,
+        use: ["pug-loader"],
       },
 
 
       //Assets
       {//For png
-        test: /\.(png|jpg|gif|svg|ico)$/,
+        test: /\.(png|jpg|gif|svg|ico)$/ ,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
@@ -140,5 +142,11 @@ module.exports = {
   ],
   externals: {
     paths: PATHS
+  },
+  devServer: {
+    port: 8080,
+    contentBase: ['./src', './public'], // both src and output dirs
+    inline: true,
+    hot: true
   },
 };
